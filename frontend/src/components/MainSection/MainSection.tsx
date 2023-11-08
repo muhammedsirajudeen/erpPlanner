@@ -1,8 +1,10 @@
 "use client"
 import { useState } from "react"
 import "./main.css"
-import Calendar from "react-calendar"
 
+import Calendar from "react-calendar"
+import ProjectDirectory from "./components/ProjectDirectory"
+import SearchBar from "./components/SearchBar"
 type ValuePiece = Date | null;
 
 
@@ -19,32 +21,36 @@ export default function MainSection(){
                 {/* calendar element */}
                 <div className="m-5 text-xs bg-gray-200 rounded-lg  ">
                     <p className=" m-3 font-bold">INVENTORY OVERVIEW</p>
-                    <div className="m-3">
+                    <div className="m-8">
                         <Calendar onChange={()=>setDate(date)}  value={date} />
                     </div>
 
                 </div>
                 {/* project directory */}
-                <div className="flex flex-col bg-gray-200 w-full min-h-10 ">
-                    <p className="font-bold text-xs m-5">PROJECT DIRECTORY</p>
-                    <div className="flex  items-center m-2">
-                        <div className="ml-3" >x {/*icon here */} </div>
-                        <a href="/relevantlink" className="text-gray-500 text-xs ml-3" >market research report</a>                        
-                    </div>
-                    <div className="flex  items-center m-2">
-                        <div className="ml-3" >x {/*icon here */} </div>
-                        <a href="/relevantlink" className="text-gray-500 text-xs ml-3" >Inventory Overview</a>                        
-                    </div>
-                    <div className="flex  items-center m-2">
-                        <div className="ml-3" >x {/*icon here */} </div>
-                        <a href="/relevantlink" className="text-gray-500 text-xs ml-3" >Employee Pay And Salary</a>                        
-                    </div>
-                    <div className="flex  items-center m-2">
-                        <div className="ml-3" >x {/*icon here */} </div>
-                        <a href="/relevantlink" className="text-gray-500 text-xs ml-3" >Insights</a>                        
+                <ProjectDirectory/>
+            </div>
+
+            <div className="flex flex-col h-full justify-start items-center m-5">
+                <SearchBar/>
+
+                <div className="flex flex-col  w-full h-52 m-10  bg-gray-200 rounded-lg ">
+                    <p className="font-bold text-xs m-3 ">URGENT TASKS</p>
+                    {/* get tasks related to this account here */}
+                    <div className="flex items-center w-full m-3 justify-between ">
+                        <div className="flex items-center justify-evenly " >
+                            <div className=" flex items-center justify-center  border border-custom-orange   w-5 h-5 rounded-full ">
+                                <div className=" bg-custom-orange w-3 h-3 rounded-full"></div>
+                            </div>
+                            <p className="text-xs text-gray-500 ml-2 ">restock inventory  </p>
+                        </div>
+                        <div className="flex justify-around items-center mr-5 ">
+                            <div className="w-2 h-2 rounded-full bg-black"></div>
+                            <p className="text-xs font-light text-black ">Today</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     )
 }
